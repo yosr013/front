@@ -1,0 +1,93 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Nouvel Ordre de Fabrication</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">Ordre de fabrication</li>
+             <li class="breadcrumb-item active">Nouvel OF</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-9">
+    <div class="card">
+       <div class="card-body"><br>
+          <h5 class="card-title">Nouvel OF </h5>
+          <form [formGroup]="addForm"  (ngSubmit)="onSubmit()"   class="row g-3" >
+             <div class="col-md-12"> 
+                <label for="libelle" class="form-label">Référence OF :</label> 
+                <input [(ngModel)] = "ordreFab.ref" type="text" class="form-control" id="ref" formControlName="ref" [ngClass]="{'is-invalid':submitted && addForm.controls.ref.errors}" >
+                <div *ngIf="submitted && addForm.controls.ref.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.ref.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+                <label for="code" class="form-label">Référence Commande :</label>
+                <select [(ngModel)] = "ordreFab.commande" formControlName="refCo" [ngClass]="{'is-invalid':submitted && addForm.controls.refCo.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerCommande($event)">
+                    <option value="{{commande.id}}" *ngFor="let commande of commandes">
+                       {{commande.ref}}
+                    </option>
+                 </select>
+                <div *ngIf="submitted && addForm.controls.refCo.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.refCo.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> <label for="modele" class="form-label"> Référence gamme de montage :</label> 
+                <select [(ngModel)] = "ordreFab.gamme" formControlName="refGa" [ngClass]="{'is-invalid':submitted && addForm.controls.refGa.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerGamme($event)">
+                   <option value="{{gamme.id}}" *ngFor="let gamme of gammes">
+                      {{gamme.ref}}
+                   </option>
+                </select>
+                <div *ngIf="submitted && addForm.controls.refGa.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.refGa.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             
+             
+             <div class="col-md-6">
+                <label for ="dateEx" style="margin-bottom: 7px;">Date de début :</label>
+                <input [(ngModel)] = "ordreFab.dateFab"class="form-control" type="date" formControlName="dateFab" [ngClass]="{'is-invalid':submitted && addForm.controls.dateFab.errors}">
+                <div *ngIf="submitted && addForm.controls.dateFab.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.dateFab.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6">
+               <label for ="dateEx" style="margin-bottom: 7px;">Date de fin prévue :</label>
+               <input [(ngModel)] = "ordreFab.dateFin"class="form-control" type="date" formControlName="dateFin" [ngClass]="{'is-invalid':submitted && addForm.controls.dateFin.errors}">
+               <div *ngIf="submitted && addForm.controls.dateFin.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.dateFin.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-12"> 
+               <label for="libelle" class="form-label">Quantité par tailles :</label> 
+               <input [(ngModel)] = "ordreFab.qteParTailles" type="text" class="form-control" id="qte" formControlName="qte" [ngClass]="{'is-invalid':submitted && addForm.controls.qte.errors}" >
+               <div *ngIf="submitted && addForm.controls.qte.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.qte.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+             <div class="text-center"> 
+                <button  class="btn btn-primary">Enregistrer</button> 
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+                
+             </div>
+          </form>
+       </div>
+    </div>
+          </div></div>
+    
+    </section>
+ </main>

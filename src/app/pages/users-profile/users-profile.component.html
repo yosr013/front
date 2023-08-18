@@ -1,0 +1,56 @@
+<main id="main" class="main" *ngIf="currentUser; else loggedOut">
+    <div class="pagetitle">
+       <h1>Profil</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+             <li class="breadcrumb-item active">Mon Profil</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section profile">
+       <div class="row">
+          <div class="col-xl-4">
+             <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                   <img src="assets/img/profil.png" alt="Profile" class="rounded-circle">
+                   <h2>{{ currentUser.username }}</h2>
+                   <h3 *ngFor="let role of currentUser.roles">{{ role }}</h3>
+                   <div class="social-links mt-2"> </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-xl-8">
+             <div class="card">
+                <div class="card-body pt-3">
+                  <h5 class="card-title">Détails Profil</h5>
+                  
+                   <div class="tab-content pt-2">
+                      <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Nom et Prénom : </div>
+                            <div class="col-lg-9 col-md-8">{{ currentUser.name }}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Adresse :</div>
+                            <div class="col-lg-9 col-md-8">{{ currentUser.adresse }}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Numéro Téléphone :</div>
+                            <div class="col-lg-9 col-md-8">{{ currentUser.numTel }}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Email : </div>
+                            <div class="col-lg-9 col-md-8">{{ currentUser.email }}</div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
+ <ng-template #loggedOut>
+   Please login.
+ </ng-template>

@@ -1,0 +1,74 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Modifier Article</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des article</li>
+            <li class="breadcrumb-item active">Modifier article</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Modifier Article </h5>
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="libelle" class="form-label">Libellé :</label> <input [(ngModel)] = "article.libelle" formControlName="libelle" [ngClass]="{'is-invalid':submitted && editForm.controls.libelle.errors}" type="text" name="libelle" class="form-control" id="libelle" >
+               <div *ngIf="submitted && editForm.controls.libelle.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.libelle.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="code" class="form-label">Thème :</label>
+               <input [(ngModel)] = "article.theme" formControlName="theme" [ngClass]="{'is-invalid':submitted && editForm.controls.theme.errors}"  type="text" name="theme" class="form-control" id="theme"  >
+               <div *ngIf="submitted && editForm.controls.theme.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.theme.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="prixFacon" class="form-label">Prix Facon:</label> <input [(ngModel)] = "article.prixFacon" formControlName="prixFacon" [ngClass]="{'is-invalid':submitted && editForm.controls.prixFacon.errors}" type="text" class="form-control" name="prixFacon" id="prixFacon"  >
+               <div *ngIf="submitted && editForm.controls.prixFacon.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.prixFacon.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+            </div>
+
+            </div>
+            <div class="col-12">
+               <label for="prixFini" class="form-label">Prix Fini:</label> 
+               <input [(ngModel)] = "article.prixFini" name="prixFini" formControlName="prixFini" [ngClass]="{'is-invalid':submitted && editForm.controls.prixFini.errors}" type="text" class="form-control" id="prixFini"  >
+               <div *ngIf="submitted && editForm.controls.prixFini.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.prixFini.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+            </div>
+            </div>
+            
+             <div class="col-md-12">
+               <label for="adresse">Couleur :</label><br>
+              <input [(ngModel)]="article.couleur" formControlName="couleur" [ngClass]="{'is-invalid':submitted && editForm.controls.couleur.errors}"  name="couleur" class="form-control" id="couleur" name="couleur" rows="5" cols="25">
+              <div *ngIf="submitted && editForm.controls.couleur.errors" class="invalid-feedback">
+               <div *ngIf="submitted && editForm.controls.couleur.errors.required">
+                  Ce champs est obligatoire!
+               </div>
+            </div>
+             </div>
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

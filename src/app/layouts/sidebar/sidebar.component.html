@@ -1,0 +1,64 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+       <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Tableau De Bord</span> </a></li>
+       <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-file-earmark-plus"></i><span>Saisie</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+             <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/nouveau-client"> <i class="bi bi-circle"></i><span>Nouveau Client</span> </a></li>
+             <li> <a routerLink="/tables-general"> <i class="bi bi-circle"></i><span>Liste des clients</span> </a></li>
+             <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/nouveau-modele"> <i class="bi bi-circle"></i><span>Nouveau Modèle</span> </a></li>
+             <li> <a routerLink="/tooltips"> <i class="bi bi-circle"></i><span>Liste des modèles</span> </a></li>
+             <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/nouvel-article"> <i class="bi bi-circle"></i><span>Nouvel Article</span> </a></li>
+             <li> <a routerLink="/cards"> <i class="bi bi-circle"></i><span>Liste des articles</span> </a></li>
+             
+             
+             
+          </ul>
+       </li>
+       <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-cart-plus"></i><span>Commande</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/add-commande"> <i class="bi bi-circle"></i><span>Nouvelle Commande</span> </a></li>
+            <li> <a routerLink="/commande-liste"> <i class="bi bi-circle"></i><span>Liste des commandes</span> </a></li>
+         </ul>
+         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#of-nav" data-bs-toggle="collapse" href="#"><i class="bi bi-file-earmark-arrow-down"></i><span>Ordre de fabrication</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+            <ul id="of-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/add-ordre-fabrication"> <i class="bi bi-circle"></i><span>Nouvel OF</span> </a></li>
+              <li> <a routerLink="/list-of"> <i class="bi bi-circle"></i><span>Liste des OF</span> </a></li>
+              <li [ngClass]="{'disabled': isAuthorizedAdmin}"> <a routerLink="/suivie-of"> <i class="bi bi-circle"></i><span>Suivi des OF</span> </a></li>
+           </ul>
+          
+       </li>
+       <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="ri-luggage-cart-line"></i><span>Chaine de production</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li> <a routerLink="/badges"> <i class="bi bi-circle"></i><span>Opération et catalogue</span> </a></li>
+            <li> <a routerLink="/gamme"> <i class="bi bi-circle"></i><span>Gamme de montage</span> </a></li>
+         </ul>
+       </li>
+       <li [ngClass]="{'disabled': isAuthorized}" class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-people"></i><span>GRH</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+             <li> <a routerLink="/add-employe"> <i class="bi bi-circle"></i><span>Nouvel Employé</span> </a></li>
+             <li> <a routerLink="/list-employees"> <i class="bi bi-circle"></i><span>Liste des employées </span> </a></li>
+          </ul>
+       </li>
+       <li [ngClass]="{'disabled': isAuthorized}"class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"><i class="bi bi-person-video3"></i> <span>Gestion des utilisateurs </span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+             <li [ngClass]="{'disabled': isAuthorized}"> <a  routerLink="/add-user"> <i class="bi bi-circle"></i><span>Nouvel Utilisateur</span> </a></li>
+             <li> <a routerLink="/users-liste"> <i class="bi bi-circle"></i><span>Liste des utilisateurs</span> </a></li>
+             
+          </ul>
+       </li>
+       <li [ngClass]="{'disabled': isAuthorized}"class="nav-item"> <a class="nav-link collapsed" routerLink="/rendement-ouvrier"><i class="bi bi-calculator"></i> <span>Calcul du rendement par ouvrier </span> </a></li>
+       <li [ngClass]="{'disabled': isAuthorized}"class="nav-item"> <a class="nav-link collapsed" routerLink="/list-rendement"><i class="bi bi-person-badge"></i> <span>Rendement des ouvriers </span> </a></li>
+       
+       
+       
+       
+       
+       
+    </ul>
+ </aside>

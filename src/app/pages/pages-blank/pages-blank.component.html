@@ -1,0 +1,71 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Détails Client</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des clients</li>
+            <li class="breadcrumb-item active">Détails client</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section profile">
+      <div class="row">
+         <div class="col-xl-8">
+            <div class="card">
+               <div class="card-body pt-3">
+                  <ul class="nav nav-tabs nav-tabs-bordered">
+                     <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Vue d'ensemble</button></li>
+                  </ul>
+                  <div class="tab-content pt-2">
+                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                        <div class="row"></div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label ">Raison Sociale :</div>
+                           <div class="col-lg-9 col-md-8">{{client.raisonSociale}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Activité  : </div>
+                           <div class="col-lg-9 col-md-8">{{client.activite}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Email :</div>
+                           <div class="col-lg-9 col-md-8">{{client.email}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Numéro Téléphone :</div>
+                           <div class="col-lg-9 col-md-8">{{client.numTel}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Adresse :</div>
+                           <div class="col-lg-9 col-md-8">{{client.adresse}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Ville :</div>
+                           <div class="col-lg-9 col-md-8">{{client.ville}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Région :</div>
+                           <div class="col-lg-9 col-md-8">{{client.region}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Pays :</div>
+                           <div class="col-lg-9 col-md-8">{{client.pays}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Code Postal :</div>
+                           <div class="col-lg-9 col-md-8">{{client.codePostal}}</div>
+                        </div>
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 label">Numéro Téléphone Fixe  :</div>
+                           <div class="col-lg-9 col-md-8">{{client.telFix}}</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

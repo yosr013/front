@@ -1,0 +1,51 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Détails Employé</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+             <li class="breadcrumb-item">Saisie</li>
+             <li class="breadcrumb-item active">Liste des employés</li>
+             <li class="breadcrumb-item active">Détails Employé</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section profile">
+       <div class="row">
+          <div class="col-xl-8">
+             <div class="card">
+                <div class="card-body pt-3">
+                   <ul class="nav nav-tabs nav-tabs-bordered">
+                      <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Vue d'ensemble</button></li>
+                   </ul>
+                   <div class="tab-content pt-2">
+                      <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                        <div class="row"></div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Matricule :</div>
+                            <div class="col-lg-9 col-md-8">{{employe.matricule}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Nom : </div>
+                            <div class="col-lg-9 col-md-8">{{employe.firstName}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Prénom :</div>
+                            <div class="col-lg-9 col-md-8">{{employe.lastName}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Numéro Téléphone:</div>
+                            <div class="col-lg-9 col-md-8">{{employe.numTel}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Email:</div>
+                            <div class="col-lg-9 col-md-8">{{employe.email}}</div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>

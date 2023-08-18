@@ -1,0 +1,43 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Liste des modéles</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des modéles</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Liste des modéles</h5>
+                  <table class="table datatable">
+                     <thead>
+                        <tr>
+                           <th scope="col">Designation</th>
+                           <th scope="col">Description</th>
+                           <th scope="col">Actions</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let modele of modeles" >
+                           <th scope="row">{{modele.designation}}</th>
+                           <td>{{modele.description}}</td>
+                           <td>
+                              <button [ngClass]="{'disabled': isAuthorized}" (click)="updateModele(modele.id)"  type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                              <button [ngClass]="{'disabled': isAuthorized}" (click)="deleteModele(modele.id)" type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                           </td>
+                           
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

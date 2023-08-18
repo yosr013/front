@@ -1,0 +1,75 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Détails Ordre de fabrication</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">Ordre Fabrication</li>
+             <li class="breadcrumb-item active">Liste des OF</li>
+             <li class="breadcrumb-item active">Détails OF</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section profile" >
+       <div class="row" >
+          <div class="col-xl-8">
+             <div class="card">
+                <div class="card-body pt-3">
+                   <ul class="nav nav-tabs nav-tabs-bordered">
+                      <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Vue d'ensemble</button></li>
+                   </ul>
+                   <div class="tab-content pt-2"  id="content" #content >
+                      <div class="tab-pane fade show active profile-overview" id="profile-overview" style="position: center;" >
+                         <div class="row"></div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label ">Référence OF :</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.ref}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Date de début fabrication : </div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.dateFab}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Date de fin prévue:</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.dateFin}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Quantité Totale :</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.commande.qte}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Quantité par tailles :</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.qteParTailles}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Article:</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.commande.article.libelle}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Couleur Article:</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.commande.article.couleur}}</div>
+                         </div>
+                         
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label">Client concerné :</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.commande.client.raisonSociale}}</div>
+                         </div>
+
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label"> Gamme de montage:</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.gamme.ref}}</div>
+                         </div>
+                         <div class="row">
+                            <div class="col-lg-3 col-md-4 label"> Temps Gamme de montage:</div>
+                            <div class="col-lg-9 col-md-8">{{ordreFab.gamme.temps}}</div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             
+
+          </div>
+       </div>
+    </section>
+ </main>

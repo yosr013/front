@@ -1,0 +1,47 @@
+<main id="main" class="main" *ngIf="isLoggedIn">
+   <div class="pagetitle">
+      <h1>Liste des articles</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des articles</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Liste des articles</h5>
+                  <table class="table datatable">
+                     <thead>
+                        <tr>
+                           <th scope="col">Libellé</th>
+                           <th scope="col">Théme</th>
+                           <th scope="col">Couleur</th>
+                           <th scope ="col">Prix</th>
+                           <th scope="col">Actions</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let article of articles" >
+                           <th scope="row">{{article.libelle}}</th>
+                           <td>{{article.theme}}</td>
+                           <td>{{article.couleur}}</td>
+                           <td>{{article.prixFini}}</td>
+                           <td>
+                             <button [ngClass]="{'disabled': isAuthorized}" (click)="updateArticle(article.id)"type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                             <button (click)="articleDetails(article.id)" type="button" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-info-circle"></i></button>
+                             <button [ngClass]="{'disabled': isAuthorized}" (click)="deleteArticle(article.id)"type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>

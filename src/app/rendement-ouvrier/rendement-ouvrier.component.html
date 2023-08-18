@@ -1,0 +1,119 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Rendement par ouvrier</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">Calcul du rendement par ouvrier</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-9">
+    <div class="card">
+       <div class="card-body"><br>
+          <h5 class="card-title">Calculer rendement par ouvrier </h5>
+          <form [formGroup]="addForm"  (ngSubmit)="onSubmit()"   class="row g-3" >
+             <div class="col-md-12"> 
+                <label for="libelle" class="form-label">Date de calcul :</label> 
+                <input  [(ngModel)] = "rendement.date" type="date" class="form-control" id="ref" formControlName="date" [ngClass]="{'is-invalid':submitted && addForm.controls.date.errors}" >
+                <div *ngIf="submitted && addForm.controls.date.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.date.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+                <label for="code" class="form-label">Matricule Ouvrier :</label>
+                <select [(ngModel)] = "rendement.employe" formControlName="matricule" [ngClass]="{'is-invalid':submitted && addForm.controls.matricule.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerEmploye($event)">
+                    <option value="{{employee.id}}" *ngFor="let employee of employees">
+                       {{employee.matricule}}
+                    </option>
+                 </select>
+                <div *ngIf="submitted && addForm.controls.matricule.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.matricule.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+               <label for="code" class="form-label">Nom de l'opération :</label>
+               <select (change)="onOperationSelect($event)" formControlName="nomOp" [ngClass]="{'is-invalid':submitted && addForm.controls.nomOp.errors}" class="form-select" aria-label="Default select example">
+                   <option value="{{operation.temps}}" *ngFor="let operation of operations">
+                      {{operation.nom}}
+                   </option>
+                </select>
+               <div *ngIf="submitted && addForm.controls.nomOp.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.nomOp.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="libelle" class="form-label">Temps de opération :</label> 
+               <input #tempsOp [(ngModel)] = "rendement.tempsOpe" type="number" class="form-control" id="qte" formControlName="tempsOp" [ngClass]="{'is-invalid':submitted && addForm.controls.tempsOp.errors}" >
+               <div *ngIf="submitted && addForm.controls.tempsOp.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.tempsOp.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="libelle" class="form-label">Temps de opération estimée:</label> 
+               <input  [(ngModel)]="rendement.tempsOpeEs" type="number" class="form-control" id="qte" formControlName="tempsOpEs" [ngClass]="{'is-invalid':submitted && addForm.controls.tempsOpEs.errors}" >
+               <div *ngIf="submitted && addForm.controls.tempsOpEs.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.tempsOpEs.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+                <label for="libelle" class="form-label">Nombre de pièces produites :</label> 
+                <input #nbrepieces [(ngModel)] = "rendement.nbrePiProduites"  type="number" class="form-control" id="nbre" formControlName="nbre" [ngClass]="{'is-invalid':submitted && addForm.controls.nbre.errors}" >
+                <div *ngIf="submitted && addForm.controls.nbre.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.nbre.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+                <label for="libelle" class="form-label">Temps de présence en heures :</label> 
+                <input #tempsPres [(ngModel)] = "rendement.tempsPre" type="number" class="form-control" id="tempsPre" formControlName="tempsPre" [ngClass]="{'is-invalid':submitted && addForm.controls.tempsPre.errors}" >
+                <div *ngIf="submitted && addForm.controls.tempsPre.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addForm.controls.tempsPre.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-12"> 
+               <label for="libelle" class="form-label">Date de début :</label> 
+               <input  [(ngModel)] = "rendement.dateDebut" type="date" class="form-control" id="ref" formControlName="dateDebut" [ngClass]="{'is-invalid':submitted && addForm.controls.dateDebut.errors}" >
+               <div *ngIf="submitted && addForm.controls.dateDebut.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.dateDebut.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-12"> 
+               <label for="libelle" class="form-label">Date Fin  :</label> 
+               <input  [(ngModel)] = "rendement.dateFin" type="date" class="form-control" id="ref" formControlName="dateFin" [ngClass]="{'is-invalid':submitted && addForm.controls.dateFin.errors}" >
+               <div *ngIf="submitted && addForm.controls.dateFin.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.dateFin.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+             <div class="text-center"> 
+                <button  class="btn btn-primary">Générer Rendement</button> 
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+                
+             </div>
+          </form>
+       </div>
+    </div>
+          </div></div>
+    
+    </section>
+ </main>
+

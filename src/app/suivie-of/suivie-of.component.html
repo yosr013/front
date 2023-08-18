@@ -1,0 +1,74 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Suivi Ordre Fabrication</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">Ordre fabrication</li>
+             <li class="breadcrumb-item active">Suivi OF</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-9">
+    <div class="card">
+       <div class="card-body"><br>
+          <h5 class="card-title">Suivi OF</h5>
+          <form  [formGroup]="suiviForm"  (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> 
+                <label for="ref" class="form-label"> Référence OF :</label> 
+                <select [(ngModel)] = "suiviProd.ordreFab" formControlName="ordre" [ngClass]="{'is-invalid':submitted && suiviForm.controls.ordre.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerOrdre($event)">
+                    <option value="{{ordre.id}}" *ngFor="let ordre of ordres">
+                       {{ordre.ref}}
+                    </option>
+                 </select>
+                <div *ngIf="submitted && suiviForm.controls.ordre.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && suiviForm.controls.ordre.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-12"> <label for="firstName" class="form-label">Nombres de piéces défaillantes :</label> <input [(ngModel)] = "suiviProd.nbrePiDef"  formControlName="nbrePiDe" [ngClass]="{'is-invalid':submitted && suiviForm.controls.nbrePiDe.errors}" type="text" class="form-control" id="nbrePiDe" >
+                <div *ngIf="submitted && suiviForm.controls.nbrePiDe.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && suiviForm.controls.nbrePiDe.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> <label for="lastName" class="form-label">Date fin fabrication actuelle :</label> <input [(ngModel)] = "suiviProd.dateFinActuelle" formControlName="dateFinAc" [ngClass]="{'is-invalid':submitted && suiviForm.controls.dateFinAc.errors}" type="date" class="form-control" id="dateFinAc"  >
+                <div *ngIf="submitted && suiviForm.controls.dateFinAc.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && suiviForm.controls.dateFinAc.errors.required">
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             
+             
+             <div class="col-md-6"> <label for="email" class="form-label">Période de fabrication prévue:</label> <input [(ngModel)] = "suiviProd.periodeFabPrevue"  formControlName="periodeFabPrevue" [ngClass]="{'is-invalid':submitted && suiviForm.controls.periodeFabPrevue.errors}" type="number" class="form-control" id="periodeFabPrevue"  >
+                <div *ngIf="submitted && suiviForm.controls.periodeFabPrevue.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && suiviForm.controls.periodeFabPrevue.errors.required" >
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-12"> <label for="numTel" class="form-label">Période de fabrication actuelle:</label> <input [(ngModel)] = "suiviProd.periodeFabActuelle" formControlName="periodeFabActuelle" [ngClass]="{'is-invalid':submitted && suiviForm.controls.periodeFabActuelle.errors}" type="text" class="form-control" id="numTel" >
+                <div *ngIf="submitted && suiviForm.controls.periodeFabActuelle.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && suiviForm.controls.periodeFabActuelle.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="text-center"> 
+                <button  class="btn btn-primary">Enregistrer</button> 
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+                
+             </div>
+          </form>
+       </div>
+    </div>
+          </div></div>
+    
+    </section>
+ </main>
+

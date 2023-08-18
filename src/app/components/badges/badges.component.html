@@ -1,0 +1,135 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Opération et catalogue</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Chaine de production</li>
+            <li class="breadcrumb-item">Opération et catalogue</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section profile">
+      <div class="row">
+       
+         <div class="col-xl-12">
+            <div class="card">
+               <div class="card-body pt-3">
+                  <ul class="nav nav-tabs nav-tabs-bordered">
+                     <li class="nav-item"> <button  class="nav-link" [ngClass]="{'disabled': isAuthorized}" data-bs-toggle="tab" data-bs-target="#profile-overview">Ajouter une nouvelle opération</button></li>
+                     <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit">Catalogue des opérations</button></li>
+                  </ul>
+                  <div class="tab-content pt-2">
+                   <div class="tab-pane fade  profile-overview" id="profile-overview" [ngClass]="{'disabled': isAuthorized}">
+
+                   <form [formGroup]="addPForm"  (ngSubmit)="saveOperation()">
+                       <div class="row mb-3">
+                       </div>
+                       <div class="row mb-3">
+                          <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nom opération : </label>
+                          <div class="col-md-8 col-lg-9"> <input [(ngModel)] = "operation.nom" formControlName="name" [ngClass]="{'is-invalid':submitted && addPForm.controls.name.errors}"name="nomOp" type="text" class="form-control" id="nomOp" >
+                           <div *ngIf="submitted && addPForm.controls.name.errors" class="invalid-feedback">
+                               <div *ngIf="submitted && addPForm.controls.name.errors.required">
+                                  Ce champs est obligatoire!
+                               </div>
+                            </div>
+                       </div>
+                       </div>
+                       <div class="row mb-3">
+                          <label for="company" class="col-md-4 col-lg-3 col-form-label">Temps opération :</label>
+                          <div class="col-md-8 col-lg-9"> 
+                           <input [(ngModel)] = "operation.temps" formControlName="temps" [ngClass]="{'is-invalid':submitted && addPForm.controls.temps.errors}" name="temps" type="text" class="form-control" id="temps" >
+                           <div *ngIf="submitted && addPForm.controls.temps.errors" class="invalid-feedback">
+                               <div *ngIf="submitted && addPForm.controls.temps.errors.required">
+                                  Ce champs est obligatoire!
+                               </div>
+                            </div>
+                       </div>
+                       </div>
+                       <div class="row mb-3">
+                          <label for="Country" class="col-md-4 col-lg-3 col-form-label">Phase : </label>
+                          <div class="col-md-8 col-lg-9"> 
+                           <select [(ngModel)] = "operation.phase" (change)="selectChangeHandlerPhase($event)" formControlName="phase" [ngClass]="{'is-invalid':submitted && addPForm.controls.phase.errors}" class="form-select" aria-label="Default select example" >
+                               <option value="{{phase.id}}" *ngFor="let phase of phases">
+                                {{phase.nom}}
+                               </option>
+                            </select>
+                            <div *ngIf="submitted && addPForm.controls.phase.errors" class="invalid-feedback">
+                               <div *ngIf="submitted && addPForm.controls.phase.errors.required">
+                                  Ce champs est obligatoire!
+                               </div>
+                            </div>
+                       </div>
+                       </div>
+                       <div class="row mb-3">
+                          <label for="Address" class="col-md-4 col-lg-3 col-form-label">Machine :</label>
+                          <div class="col-md-8 col-lg-9"> 
+                             <select [(ngModel)] = "operation.machine" (change)="selectChangeHandlerMachine($event)" formControlName="machine" [ngClass]="{'is-invalid':submitted && addPForm.controls.machine.errors}" class="form-select" >
+                                <option value="{{machine.id}}" *ngFor="let machine of machines">
+                                 {{machine.designation}}
+                                </option>
+                             </select>
+                           
+                            <div *ngIf="submitted && addPForm.controls.machine.errors" class="invalid-feedback">
+                               <div *ngIf="submitted && addPForm.controls.machine.errors.required">
+                                  Ce champs est obligatoire!
+                               </div>
+                            </div>
+                       
+                       </div>
+                       </div>
+                       <div class="row mb-3">
+                          <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Code opération :</label>
+                          <div class="col-md-8 col-lg-9"> 
+                           <input [(ngModel)] = "operation.code" formControlName="code" [ngClass]="{'is-invalid':submitted && addPForm.controls.code.errors}"  name="code" type="text" class="form-control" id="code" >
+                           <div *ngIf="submitted && addPForm.controls.code.errors" class="invalid-feedback">
+                               <div *ngIf="submitted && addPForm.controls.code.errors.required">
+                                  Ce champs est obligatoire!
+                               </div>
+                            </div>
+                       </div>
+                       </div>
+                       <div class="text-center"> 
+                           <button type="submit" class="btn btn-primary">Enregistrer</button>
+                           <button type="reset" class="btn btn-secondary">Annuler</button>
+                       </div>
+                    </form>
+                   </div>
+                     <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                       
+                       <table class="table ">
+                           <thead>
+                               <tr>
+                                   <th scope="col">Nom opération</th>
+                                   <th scope="col">Code opération</th>
+                                   <th scope="col">Temps opération</th>
+                                   <th scope="col">Machine</th>
+                                   <th scope="col">Actions</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                                    <tr *ngFor="let operation of operations">
+                                       <td>{{operation.nom}}</td>
+                                       <td>{{operation.code}}</td>
+                                       <td>{{operation.temps}}</td>
+                                       <td>{{operation.machine.designation}}</td>
+                                       <td>
+                                         <button type="button" [ngClass]="{'disabled': isAuthorized}"(click)="updateOperation(operation.id)" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                         <button type="button" [ngClass]="{'disabled': isAuthorized}" (click)="deleteOperation(operation.id)" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     
+                     
+                  </div>
+               </div>
+            </div>
+         
+   </section>
+</main>

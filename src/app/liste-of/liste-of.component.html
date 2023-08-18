@@ -1,0 +1,47 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Liste des OF</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+             <li class="breadcrumb-item">Ordre de fabrication</li>
+             <li class="breadcrumb-item active">Liste des OF</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Liste des OF</h5>
+                   <table class="table ">
+                      <thead>
+                         <tr>
+                            <th scope="col">Référence OF </th>
+                            <th scope="col">Date de début fabrication :</th>
+                            <th scope ="col">Date de fin prévue</th>
+                            <th scope ="col">Actions </th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let ordre of ordres" >
+
+                           <td>{{ordre.ref}}</td>
+                           <td>{{ordre.dateFab}}</td>
+                           <td>{{ordre.dateFin}}</td>
+                           <td>
+                            <button (click)="ordreFabDetails(ordre.id)"type="button" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-info-circle"></i></button>
+                            <button type="button" (click)="genererPDF(ordre.id)" class="btn btn-primary" style="margin-left: 10px"><i class="bi bi-file-earmark-arrow-down"></i></button>
+                            <button type="button" (click)="affichierChart(ordre.id)" class="btn btn-warning" style="margin-left: 10px"><i class="bi bi-clipboard-data"></i></button>
+                           </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
+

@@ -1,0 +1,50 @@
+<main id="main" class="main" *ngIf="isLoggedIn">
+    <div class="pagetitle">
+       <h1>Liste des commandes</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+             <li class="breadcrumb-item">Commande</li>
+             <li class="breadcrumb-item active">Liste des commandes</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Liste des commandes</h5>
+                   <table id="myTable" class="table">
+                      <thead>
+                         <tr>
+                            <th scope="col">Client</th>
+                            <th scope="col">Libellé Article</th>
+                            <th scope ="col">Quantité</th>
+                            <th scope ="col">Date Entrée</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">Actions</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let commande of commandes" >
+                           <td>{{commande.client.raisonSociale}}</td>
+                           <td>{{commande.article.libelle}}</td>
+                           <td>{{commande.qte}}</td>
+                           <td  scope="row">{{commande.dateEntree}}</td>
+                           <td>{{commande.etat}}</td>
+                          
+                           <td>
+                              <button [ngClass]="{'disabled': isAuthorized}" (click)="updateCommande(commande.id)" type="button" class=" btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                              <button [ngClass]="{'disabled': isAuthorized}" (click)="deleteCommande(commande.id)" type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                              <button (click)="genererPDF(commande.id)" type="button" class=" btn btn-success"style="margin-left: 10px"><i class="bi bi-file-earmark-arrow-down"></i></button>
+                           </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>

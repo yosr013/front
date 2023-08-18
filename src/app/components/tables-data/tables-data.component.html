@@ -1,0 +1,43 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Data Tables</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+             <li class="breadcrumb-item">Tables</li>
+             <li class="breadcrumb-item active">Data</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Liste des clients</h5>
+                   <table class="table datatable">
+                      <thead>
+                         <tr>
+                            <th scope="col">Identifiant</th>
+                            <th scope="col">Raison Sociale</th>
+                            <th scope="col">Actions</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr  >
+                            <th scope="row"></th>
+                            <td></td>
+                            <td>
+                              <button  type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                              <button type="button" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-info-circle"></i></button>
+                              <button (click)="delete()" type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>

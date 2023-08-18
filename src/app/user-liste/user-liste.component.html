@@ -1,0 +1,45 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Liste des utilisateurs</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">Gestion des utilisateurs</li>
+             <li class="breadcrumb-item active">Liste des utilisateurs</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Liste des utilisateurs</h5>
+                   <table class="table datatable">
+                      <thead>
+                         <tr>
+                            <th scope="col">Nom et prénom</th>
+                            <th scope="col">Rôle</th>
+                            <th scope ="col">Email</th>
+                            <th scope="col">Actions</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let user of users" >
+                            <td  scope="row">{{user.name}}</td>
+                            <td *ngFor="let role of user.roles">{{role.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>
+                              <button (click)="updateUser(user.id)" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                              <button type="button"(click)="userDetails(user.id)" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-info-circle"></i></button>
+                              <button (click)="deleteUser(user.id)" type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>

@@ -1,0 +1,139 @@
+<main id="main" class="main" *ngIf="isLoggedIn">
+    <div class="pagetitle">
+       <h1>Tableau de bord</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item active">Tableau de bord</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section dashboard">
+       <div class="row">
+          <div class="col-lg-8">
+             <div class="row">
+                <div class="col-xxl-4 col-md-6">
+                   <div class="card info-card sales-card">
+                      
+                      <div class="card-body">
+                         <h5 class="card-title">Nombre de commandes non encore traitées</h5>
+                         <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-bag-x-fill"></i></div>
+                            <div class="ps-3">
+                               <h6>{{ nombreCommandesEtatZero }}</h6>
+                               <span class="text-danger small pt-1 fw-bold">{{ pourcentageCommandesEtatZero }} % </span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-4 col-md-6">
+                   <div class="card info-card revenue-card">
+                      <div class="card-body">
+                         <h5 class="card-title">Nombre de commandes déja traitées</h5>
+                         <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-bag-check-fill"></i></div>
+                            <div class="ps-3">
+                               <h6>{{nombreCommandesEtatUn}}</h6>
+                               <span class="text-success small pt-1 fw-bold">{{ pourcentageCommandesEtatUn }} % </span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-4 col-xl-12">
+                   <div class="card info-card customers-card">
+                      <div class="card-body">
+                         <h5 class="card-title">L'article le plus commandé</h5>
+                         <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-trophy"></i></div>
+                            <div class="ps-3">
+                               <h6>{{ mostOrderedArticleLabel }}</h6>
+                               <span class="text-muted small pt-2 ps-1">Avec un nombre de commandes : </span> <span class="text-primary small pt-1 fw-bold">{{mostOrderedArticleCount}}</span> 
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-12">
+                   <div class="card">
+                      <div class="card-body">
+                         <h5 class="card-title">Triage des commandes par date de livraison</h5>
+                         <div id="reportsChart">
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-12">
+                   <div class="card recent-sales overflow-auto">
+                      <div class="card-body">
+                         <h5 class="card-title">Affectation de prime selon le rendement des ouvriers</h5>
+                         <table class="table table-borderless datatable">
+                            <thead>
+                               <tr>
+                                  <th scope="col">Matricule ouvrier</th>
+                                  <th scope="col">Rendement estimé</th>
+                                  <th scope="col">Rendement actuel</th>
+                                  <th scope="col">Décision prime</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               <tr *ngFor="let rendement of rendements">
+                                  <td>{{rendement.employe.matricule}}</td>
+                                  <td>{{rendement.rendementEs}}</td>
+                                  <td class="text-primary">{{rendement.rendement}}</td>
+                                  <td>
+                                    <span *ngIf="rendement.rendement >= 50" class="badge bg-success"><i class="bi bi-check-circle me-1"> Doté de prime</i></span>
+                                    <span *ngIf="rendement.rendement <50" class="badge bg-danger"><i class="bi bi-x-circle"></i> Non doté de prime</span>
+                                 </td>
+                               </tr>
+                            </tbody>
+                         </table>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-12">
+                   <div class="card top-selling overflow-auto">
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Top 5 Articles les plus fabriqués</h5>
+                   <div class="activity">
+                      <div class="activity-item d-flex">
+                         <div  class="activity-content" >
+                           <p *ngFor="let article of articles; let i = index;">
+                              <span *ngIf="i+1 != 1" style="display: none;">
+                                 {{ i + 1 }}
+                              </span>
+                              <span *ngIf="i+1==1" class="badge bg-success"><i class="ri-number-1"></i></span>
+                              <span *ngIf="i+1==2" class="badge bg-primary"><i class="ri-number-2"></i></span>
+                              <span *ngIf="i+1==3" class="badge bg-warning"><i class="ri-number-3"></i></span>
+                              <span *ngIf="i+1==4" class="badge bg-info"><i class="ri-number-4"></i></span>
+                              <span *ngIf="i+1==5" class="badge bg-secondary"><i class="ri-number-5"></i></span>
+                              <span>
+                                 {{ article }}
+                              </span>
+                           </p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+            
+             
+             <div class="card">
+                
+                <div class="card-body pb-0">
+                   <h5 class="card-title">Nombre de commandes par clients</h5>
+                   <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                </div>
+             </div>
+             
+          </div>
+       </div>
+    </section>
+ </main>

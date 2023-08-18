@@ -1,0 +1,82 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Nouvel Employé</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">GRH</li>
+             <li class="breadcrumb-item active">Nouvel Employé</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-9">
+    <div class="card">
+       <div class="card-body"><br>
+          <h5 class="card-title">Nouvel Employé</h5>
+          <form  [formGroup]="addClForm"  (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="matricule" class="form-label">Matricule :</label> <input [(ngModel)] = "employe.matricule" formControlName="matricule" [ngClass]="{'is-invalid':submitted && addClForm.controls.matricule.errors}" type="text" class="form-control" id="matricule" >
+                <div *ngIf="submitted && addClForm.controls.matricule.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addClForm.controls.matricule.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                   <div *ngIf="submitted && addClForm.controls.matricule.errors.minlength">
+                    Ce champ doit comporter au minimum 4 caractères!
+                   </div>
+                   <div *ngIf="submitted && addClForm.controls.matricule.errors.maxlength">
+                    Ce champ doit comporter au maximum 4 caractères!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-12"> <label for="firstName" class="form-label">Nom :</label> <input [(ngModel)] = "employe.firstName" formControlName="firstName" [ngClass]="{'is-invalid':submitted && addClForm.controls.firstName.errors}" type="text" class="form-control" id="firstName" >
+                <div *ngIf="submitted && addClForm.controls.firstName.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addClForm.controls.firstName.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> <label for="lastName" class="form-label">Prénom :</label> <input [(ngModel)] = "employe.lastName" formControlName="lastName" [ngClass]="{'is-invalid':submitted && addClForm.controls.lastName.errors}" type="text" class="form-control" id="lastName"  >
+                <div *ngIf="submitted && addClForm.controls.lastName.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addClForm.controls.lastName.errors.required">
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             
+             
+             <div class="col-md-6"> <label for="email" class="form-label">Email:</label> <input [(ngModel)] = "employe.email"  formControlName="email" [ngClass]="{'is-invalid':submitted && addClForm.controls.email.errors}" type="email" class="form-control" id="email"  >
+                <div *ngIf="submitted && addClForm.controls.email.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addClForm.controls.email.errors.required" >
+                      Ce champ est obligatoire!
+                   </div>
+                   <div *ngIf="submitted && addClForm.controls.email.errors.email">
+                      Veuillez entrer un email valide!
+                  </div>
+                </div>
+             </div>
+             <div class="col-md-12"> <label for="numTel" class="form-label">Numéro Téléphone :</label> <input [(ngModel)] = "employe.numTel" formControlName="numTel" [ngClass]="{'is-invalid':submitted && addClForm.controls.numTel.errors}" type="text" class="form-control" id="numTel" >
+                <div *ngIf="submitted && addClForm.controls.numTel.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addClForm.controls.numTel.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                   <div *ngIf="submitted && addClForm.controls.numTel.errors.minlength">
+                    Ce champ doit comporter au minimum 8 caractères!
+                   </div>
+                   <div *ngIf="submitted && addClForm.controls.numTel.errors.maxlength">
+                    Ce champ doit comporter au maximum 8 caractères!
+                   </div>
+                </div>
+             </div>
+             <div class="text-center"> 
+                <button  class="btn btn-primary">Enregistrer</button> 
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+                
+             </div>
+          </form>
+       </div>
+    </div>
+          </div></div>
+    
+    </section>
+ </main>

@@ -1,0 +1,115 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Nouvelle Commande</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+             <li class="breadcrumb-item">Commande</li>
+             <li class="breadcrumb-item active">Nouvelle Commande</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-9">
+    <div class="card">
+       <div class="card-body"><br>
+          <h5 class="card-title">Nouvelle Commande</h5>
+          <form  [formGroup]="addCoForm"  (ngSubmit)="onSubmit()"  class="row g-3" >
+             <div class="col-md-12"> 
+                <label for="raisonSociale" class="form-label"> Client :</label> 
+                <select [(ngModel)] = "commande.client" formControlName="client" [ngClass]="{'is-invalid':submitted && addCoForm.controls.client.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerClient($event)">
+                    <option value="{{client.id}}" *ngFor="let client of clients">
+                       {{client.raisonSociale}}
+                    </option>
+                 </select>
+                <div *ngIf="submitted && addCoForm.controls.client.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addCoForm.controls.client.errors.required">
+                      Ce champs est obligatoire!
+                   </div>
+                </div>
+             </div>
+    
+             <div class="col-md-6"> 
+                <label for="article" class="form-label">Article :</label> 
+                <select [(ngModel)] = "commande.article" formControlName="article" [ngClass]="{'is-invalid':submitted && addCoForm.controls.article.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerArticle($event)">
+                    <option value="{{article.id}}" *ngFor="let article of articles">
+                       {{article.libelle}}
+                    </option>
+                 </select>
+                <div *ngIf="submitted && addCoForm.controls.article.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addCoForm.controls.article.errors.required">
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+                <label for="qte" class="form-label"> Quantité totale :</label> 
+                <input [(ngModel)] = "commande.qte" name="qte" formControlName="qte" [ngClass]="{'is-invalid':submitted && addCoForm.controls.qte.errors}" type="number" class="form-control" id="qte"  >
+                <div *ngIf="submitted && addCoForm.controls.qte.errors" class="invalid-feedback" >
+                   <div *ngIf="submitted && addCoForm.controls.qte.errors.required" >
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-12"> 
+                <label for="dateEntree" class="form-label">Date Entrée  :</label> 
+                <input [(ngModel)] = "commande.dateEntree"  name="dateEntree" formControlName="dateEntree" [ngClass]="{'is-invalid':submitted && addCoForm.controls.dateEntree.errors}" type="date" class="form-control" id="dateEntree"  >
+                <div *ngIf="submitted && addCoForm.controls.dateEntree.errors" class="invalid-feedback" >
+                   <div *ngIf="submitted && addCoForm.controls.dateEntree.errors.required" >
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-6"> 
+                <label for="dateLivraison" class="form-label">Date Livraison :</label>
+                <input [(ngModel)] = "commande.dateLivraison" name="dateLivraison" formControlName="dateLivraison" [ngClass]="{'is-invalid':submitted &&addCoForm.controls.dateLivraison.errors}"  type="date" class="form-control" id="adresse">
+                <div *ngIf="submitted && addCoForm.controls.dateLivraison.errors" class="invalid-feedback">
+                   <div *ngIf="submitted && addCoForm.controls.dateLivraison.errors.required" >
+                      Ce champ est obligatoire!
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="saison" class="form-label">Saison  :</label> 
+               <select [(ngModel)] = "commande.saison" formControlName="saison" [ngClass]="{'is-invalid':submitted && addCoForm.controls.saison.errors}" class="form-select" aria-label="Default select example">
+                  <option value="printemps">
+                     Le printemps
+                  </option>
+                  <option value="l'été">
+                     L'été
+                  </option>
+                  <option value="l'automne">
+                     L'automne
+                  </option>
+                  <option value="l'hiver">
+                     L'hiver
+                  </option>
+               </select>
+              <div *ngIf="submitted && addCoForm.controls.saison.errors" class="invalid-feedback">
+                 <div *ngIf="submitted && addCoForm.controls.saison.errors.required">
+                    Ce champ est obligatoire!
+                 </div>
+              </div>
+            </div>
+            <div class="col-md-12"> 
+               <label for="dateLivraison" class="form-label">Référence :</label>
+               <input [(ngModel)] = "commande.ref" name="ref" formControlName="ref" [ngClass]="{'is-invalid':submitted &&addCoForm.controls.ref.errors}"  type="text" class="form-control" id="ref">
+               <div *ngIf="submitted && addCoForm.controls.ref.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addCoForm.controls.ref.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+           </div>
+            
+             <div class="text-center"> 
+                <button  class="btn btn-primary">Enregistrer</button> 
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+             </div>
+          </form>
+       </div>
+    </div>
+          </div></div>
+    
+    </section>
+ </main>

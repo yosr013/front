@@ -1,0 +1,46 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Liste des employés </h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+             <li class="breadcrumb-item">GRH</li>
+             <li class="breadcrumb-item active">Liste des employés </li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Liste des employés</h5>
+                   <table class="table datatable" style="width:100%">
+                      <thead>
+                         <tr>
+                            <th scope ="col">Matricule</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Actions</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let employee of employees" >
+                            <th scope="row">{{employee.matricule}}</th>
+                            <td>{{employee.firstName}}</td>
+                            <td>{{employee.lastName}}</td>
+                            <td>
+                              <button (click)="updateEmployee(employee.id)" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                              <button (click)="employeeDetails(employee.id)"typetype="button" class="btn btn-success" style="margin-left: 10px"><i class="bi bi-info-circle"></i></button>
+                              <button (click)="deleteEmployee(employee.id)" type="button" class="btn btn-danger"style="margin-left: 10px"><i class="bi bi-trash"></i></button>
+                            </td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
+ 

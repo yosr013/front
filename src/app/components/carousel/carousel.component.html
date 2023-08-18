@@ -1,0 +1,50 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Modifier Modèle</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des modèles</li>
+            <li class="breadcrumb-item active">Modifier Modèle</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Modifier Modèle</h5>
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="designation" class="form-label">Designation :</label> <input [(ngModel)] = "modele.designation"  [ngClass]="{'is-invalid':submitted && editForm.controls.designation.errors}" formControlName="designation" name="designation" type="text" class="form-control" id="designation" >
+               <div *ngIf="submitted && editForm.controls.designation.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.designation.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+   
+            
+          
+            <div class="col-12"> <label for="description" class="form-label">Description:</label> <input formControlName="des" [(ngModel)] = "modele.description" [ngClass]="{'is-invalid':submitted && editForm.controls.des.errors}" name="desc"  type="text" class="form-control" id="des"  >
+               <div *ngIf="submitted && editForm.controls.des.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.des.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            
+            
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

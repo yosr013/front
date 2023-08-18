@@ -1,0 +1,141 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Modifier Client</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Liste des clients</li>
+            <li class="breadcrumb-item active">Modifier client</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Modifier Client</h5>
+         <form  [formGroup]="editClForm"  (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="raisonSociale" class="form-label">Raison Sociale :</label> <input [(ngModel)] = "client.raisonSociale" formControlName="raisonSociale" [ngClass]="{'is-invalid':submitted && editClForm.controls.raisonSociale.errors}" type="text" class="form-control" id="raisonSociale" >
+               <div *ngIf="submitted && editClForm.controls.raisonSociale.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editClForm.controls.raisonSociale.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+   
+            <div class="col-md-6"> <label for="code" class="form-label">Code :</label> <input [(ngModel)] = "client.code" formControlName="code" [ngClass]="{'is-invalid':submitted && editClForm.controls.code.errors}" type="text" class="form-control" id="code"  >
+               <div *ngIf="submitted && editClForm.controls.code.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editClForm.controls.code.errors.required">
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="activite" class="form-label">Activité :</label> <input [(ngModel)] = "client.activite" formControlName="activite" [ngClass]="{'is-invalid':submitted && editClForm.controls.activite.errors}" type="text" class="form-control" id="activite"  >
+               <div *ngIf="submitted && editClForm.controls.activite.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.activite.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-12"> <label for="adresse" class="form-label">Adresse:</label> <input [(ngModel)] = "client.adresse" formControlName="adresse" [ngClass]="{'is-invalid':submitted &&editClForm.controls.adresse.errors}"  type="text" class="form-control" id="adresse"  >
+               <div *ngIf="submitted && editClForm.controls.adresse.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editClForm.controls.adresse.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="email" class="form-label">Email:</label> <input [(ngModel)] = "client.email"  formControlName="email" [ngClass]="{'is-invalid':submitted && editClForm.controls.email.errors}" type="email" class="form-control" id="email"  >
+               <div *ngIf="submitted && editClForm.controls.email.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editClForm.controls.email.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+                  <div *ngIf="submitted && editClForm.controls.email.errors.email">
+                     Veuillez entrer un email valide!
+                 </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="tel" class="form-label">Numéro Téléphone:</label> <input [(ngModel)] = "client.numTel" formControlName="numTel" [ngClass]="{'is-invalid':submitted && editClForm.controls.numTel.errors}" type="text" class="form-control" id="tel"  >
+               <div *ngIf="submitted && editClForm.controls.numTel.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editClForm.controls.numTel.errors.required" >
+                    Ce champ est obligatoire!
+                  </div>
+                  <div *ngIf="submitted && editClForm.controls.numTel.errors.minlength">
+                     Ce champ doit comporter au minimum 8 caractères!
+                    </div>
+                    <div *ngIf="submitted && editClForm.controls.numTel.errors.maxlength">
+                     Ce champ doit comporter au maximum 8 caractères!
+                    </div>
+               </div>
+            </div>
+            <div class="col-12"> <label for="ville" class="form-label">Ville:</label> <input [(ngModel)] = "client.ville" formControlName ="ville" [ngClass]="{'is-invalid':submitted && editClForm.controls.ville.errors}" type="text" class="form-control" id="ville"  >
+               <div *ngIf="submitted && editClForm.controls.ville.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.ville.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+            </div>
+
+                <div class="col-md-6">
+                  <label for="adresse">Region :</label><br>
+                <input [(ngModel)] = "client.region"  [ngClass]="{'is-invalid':submitted && editClForm.controls.region.errors}" formControlName="region" class="form-control" id="region" name="region" rows="5" cols="25">
+                <div *ngIf="submitted && editClForm.controls.region.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.region.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="adresse">Téléphone Fixe :</label><br>
+                <input [(ngModel)] = "client.telFix"  [ngClass]="{'is-invalid':submitted && editClForm.controls.telFix.errors}" formControlName="telFix" class="form-control" id="telFix" name="telFix" rows="5" cols="25">
+                <div *ngIf="submitted && editClForm.controls.region.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.region.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="adresse">Fax :</label><br>
+                <input [(ngModel)] = "client.fax"  [ngClass]="{'is-invalid':submitted && editClForm.controls.fax.errors}" formControlName="fax" class="form-control" id="fax" name="fax" rows="5" cols="25">
+                <div *ngIf="submitted && editClForm.controls.fax.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.fax.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="adresse">Code Postal :</label><br>
+                <input [(ngModel)] = "client.codePostal"  [ngClass]="{'is-invalid':submitted && editClForm.controls.codePostal.errors}" formControlName="codePostal" class="form-control" id="codePostal" name="codePostal" rows="5" cols="25">
+                <div *ngIf="submitted && editClForm.controls.codePostal.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.codePostal.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="adresse">Pays :</label><br>
+                <input [(ngModel)] = "client.pays"  [ngClass]="{'is-invalid':submitted && editClForm.controls.pays.errors}" formControlName="pays" class="form-control" id="pays" name="pays" rows="5" cols="25">
+                <div *ngIf="submitted && editClForm.controls.pays.errors" class="invalid-feedback" >
+                  <div *ngIf="submitted && editClForm.controls.pays.errors.required" >
+                     Ce champ est obligatoire!
+                  </div>
+               </div>
+                </div>
+            
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

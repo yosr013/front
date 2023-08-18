@@ -1,0 +1,56 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Modifier Opération</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+            <li class="breadcrumb-item">Chaine de production</li>
+            <li class="breadcrumb-item active">Opération et catalogue</li>
+            <li class="breadcrumb-item active">Modifier opération</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Modifier Opération </h5>
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="libelle" class="form-label">Nom Opération :</label> <input [(ngModel)] = "operation.nom" formControlName="name" [ngClass]="{'is-invalid':submitted && editForm.controls.name.errors}" type="text" name="libelle" class="form-control" id="libelle" >
+               <div *ngIf="submitted && editForm.controls.name.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.name.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="code" class="form-label">Code opération :</label>
+               <input [(ngModel)] = "operation.code" formControlName="code" [ngClass]="{'is-invalid':submitted && editForm.controls.code.errors}"  type="text" name="code" class="form-control" id="code"  >
+               <div *ngIf="submitted && editForm.controls.code.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.code.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="temps" class="form-label">Temps opération :</label> <input [(ngModel)] = "operation.temps" formControlName="temps" [ngClass]="{'is-invalid':submitted && editForm.controls.temps.errors}" type="text" class="form-control" name="prixFacon" id="prixFacon"  >
+               <div *ngIf="submitted && editForm.controls.temps.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && editForm.controls.temps.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+            </div>
+
+            </div>
+         
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

@@ -1,0 +1,56 @@
+<main *ngIf="!isLoggedIn">
+    <div class="container">
+       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+          <div class="container">
+             <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                   <div class="d-flex justify-content-center py-4"> <a routerLink="/" class="logo d-flex align-items-center w-auto"> <img src="assets/img/logo.png" alt=""> <span class="d-none d-lg-block">GPAO</span> </a></div>
+                   <div class="card mb-3">
+                      <div class="card-body">
+                         <div class="pt-4 pb-2">
+                            <h5 class="card-title text-center pb-0 fs-4">Se Connecter</h5>
+                            <p class="text-center small">Entrez votre nom d'utilisateur & mot de passe pour accéder a votre compte</p>
+                         </div>
+                         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row g-3 needs-validation">
+                            <div class="col-12" >
+                               <label for="yourUsername" class="form-label">Nom d'utilisateur</label>
+                               <div class="input-group has-validation">
+                                  <span class="input-group-text" id="inputGroupPrepend">@</span> 
+                                  <input type="text" name="username" [(ngModel)]="form.username" required #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }" class="form-control" id="yourUsername">
+                                    <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                                       Le nom d'utilisateur est obligatoire !
+                                     </div>
+                                  
+                               </div>
+                            </div>
+                            <div class="col-12">
+                               <label for="yourPassword" class="form-label">Mot de passe</label> <input type="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" class="form-control" name="password" type="password"  class="form-control" id="yourPassword">
+                               <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+                                 <div *ngIf="password.errors['required']">Le mot de passe est obligatoire !</div>
+                                 <div *ngIf="password.errors['minlength']">
+                                    Le mot de passe doit contenir au moins de 6 caractères !
+                                 </div>
+                               </div>
+                               <a routerLink="/reset-password" class="small mb-0">Mot de passe oublié?</a>
+                            </div>
+                            
+                            <div class="col-12 mt-2">
+                              <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+                                 Login ou mot de passe incorrects !
+                               </div>
+                            </div>
+                            
+                            
+                            <div class="col-12"> 
+                              <button class="btn btn-primary w-100" type="submit">Se Connecter</button>
+                           </div>
+                         </form>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </section>
+    </div>
+ </main>
+ 

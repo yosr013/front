@@ -1,0 +1,13 @@
+
+<app-pages-login *ngIf="!isLoggedIn"></app-pages-login>
+<app-reset-password *ngIf="!isLoggedIn"></app-reset-password>
+
+<router-outlet *ngIf="isLoggedIn"></router-outlet>
+
+<app-footer *ngIf="isLoggedIn"></app-footer>
+<app-header *ngIf="isLoggedIn"></app-header>
+<app-sidebar *ngIf="isLoggedIn"></app-sidebar>
+
+
+
+

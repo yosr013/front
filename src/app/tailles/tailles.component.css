@@ -1,0 +1,13 @@
+.card-body .btn{margin-right: 5px;}
+.custom-table td {
+    padding-right: 1px;
+    padding-bottom: 5px;
+  }
+  .colonne-large {
+    width: 100px; /* Ajustez cette valeur selon vos besoins */
+  }
+  .disabled {
+    opacity: 0.5; /* Réduire l'opacité pour simuler un élément désactivé */
+    pointer-events: none; /* Désactiver les interactions de l'élément */
+    cursor: not-allowed; /* Changer le curseur de la souris pour indiquer qu'il est désactivé */
+  }

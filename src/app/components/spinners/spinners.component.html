@@ -1,0 +1,49 @@
+<main id="main" class="main"*ngIf="isLoggedIn">
+   <div class="pagetitle">
+      <h1>Nouveau Modèle</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Nouveau Modèle</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Nouveau Modèle</h5>
+         <form  [formGroup]="addMoForm"  (ngSubmit)="onSubmit()"  class="row g-3" >
+            <div class="col-md-12"> <label for="designation" class="form-label">Désignation :</label> <input [(ngModel)] = "modele.designation" formControlName="desg" [ngClass]="{'is-invalid':submitted && addMoForm.controls.desg.errors}" type="text" class="form-control" id="desg" >
+               <div *ngIf="submitted && addMoForm.controls.desg.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addMoForm.controls.desg.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+   
+            
+          
+            <div class="col-12"> <label for="description" class="form-label">Description:</label> <input [(ngModel)] = "modele.description" formControlName="des" [ngClass]="{'is-invalid':submitted && addMoForm.controls.des.errors}"  type="text" class="form-control" id="des">
+               <div *ngIf="submitted && addMoForm.controls.des.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addMoForm.controls.des.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            
+            
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

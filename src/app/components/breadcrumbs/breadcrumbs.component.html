@@ -1,0 +1,87 @@
+<main id="main" class="main"*ngIf="isLoggedIn">
+   <div class="pagetitle">
+      <h1>Nouvel Article</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Saisie</li>
+            <li class="breadcrumb-item active">Nouvel Article</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section">
+      <div class="row">
+         <div class="col-lg-9">
+   <div class="card">
+      <div class="card-body"><br>
+         <h5 class="card-title">Nouvel Article </h5>
+         <form [formGroup]="addForm"  (ngSubmit)="onSubmit()"   class="row g-3" >
+            <div class="col-md-12"> 
+               <label for="libelle" class="form-label">Libellé :</label> 
+               <input [(ngModel)] = "article.libelle" type="text" class="form-control" id="libelle" formControlName="libelle" [ngClass]="{'is-invalid':submitted && addForm.controls.libelle.errors}" >
+               <div *ngIf="submitted && addForm.controls.libelle.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.libelle.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> 
+               <label for="code" class="form-label">Thème :</label>
+               <input [(ngModel)] = "article.theme" type="text" class="form-control" id="theme" id="theme" formControlName="theme" [ngClass]="{'is-invalid':submitted && addForm.controls.theme.errors}">
+               <div *ngIf="submitted && addForm.controls.theme.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.theme.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6"> <label for="modele" class="form-label">Modèle :</label> 
+               <select [(ngModel)] = "article.modele" formControlName="modele" [ngClass]="{'is-invalid':submitted && addForm.controls.modele.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerModele($event)">
+                  <option value="{{modele.id}}" *ngFor="let modele of modeles">
+                     {{modele.designation}}
+                  </option>
+               </select>
+               <div *ngIf="submitted && addForm.controls.modele.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.modele.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-12">
+               <label for="prixFacon" class="form-label">Prix Facon:</label> 
+               <input  [(ngModel)] = "article.prixFacon" type="text" class="form-control" id="prixFacon" formControlName="prixFacon" [ngClass]="{'is-invalid':submitted && addForm.controls.prixFacon.errors}">
+               <div *ngIf="submitted && addForm.controls.prixFacon.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.prixFacon.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+            </div>
+            </div>
+            <div class="col-md-6">
+               <label for="prixFini" class="form-label">Prix Fini:</label> 
+               <input [(ngModel)] = "article.prixFini" type="text" class="form-control" id="prixFini" formControlName="prixFini" [ngClass]="{'is-invalid':submitted && addForm.controls.prixFini.errors}">
+               <div *ngIf="submitted && addForm.controls.prixFini.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && addForm.controls.prixFini.errors.required">
+                     Ce champs est obligatoire!
+                  </div>
+            </div>
+            </div>
+             <div class="col-md-6">
+               <label for="adresse" class="form-label">Couleur :</label><br>
+              <input [(ngModel)] = "article.couleur" class="form-control" id="couleur" name="couleur" rows="5" cols="25" formControlName="couleur" [ngClass]="{'is-invalid':submitted && addForm.controls.couleur.errors}">
+              <div *ngIf="submitted && addForm.controls.couleur.errors" class="invalid-feedback">
+               <div *ngIf="submitted && addForm.controls.couleur.errors.required">
+                  Ce champs est obligatoire!
+               </div>
+            </div>
+             </div>
+            <div class="text-center"> 
+               <button  class="btn btn-primary">Enregistrer</button> 
+               <button type="reset" class="btn btn-secondary">Annuler</button>
+               
+            </div>
+         </form>
+      </div>
+   </div>
+         </div></div>
+   
+   </section>
+</main>

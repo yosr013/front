@@ -1,0 +1,88 @@
+<main id="main" class="main">
+   <div class="pagetitle">
+      <h1>Paramètres Tailles</h1>
+      <nav>
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+            <li class="breadcrumb-item">Paramètres </li>
+            <li class="breadcrumb-item active">Tailles</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="section profile">
+      <div class="row">
+         
+         <div class="col-xl-10">
+            <div class="card">
+               <div class="card-body pt-3">
+                  <ul class="nav nav-tabs nav-tabs-bordered">
+                     <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Les tailles disponibles</button></li>
+                     <li class="nav-item"> <button [ngClass]="{'disabled': isAuthorized}" class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Ajouter une nouvelle taille</button></li>
+                  </ul>
+                  <div class="tab-content pt-2">
+                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                        <table class="table datatable custom-table">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Article</th>
+                                 <th scope="col" class="colonne-large">Tailles</th>
+                                 
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr *ngFor="let article of articles">
+                                 <td>{{article.libelle}}</td>
+                                 <td *ngFor="let taille of article.tailles">{{taille.designation}}</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                        <form [formGroup]="addForm"  (ngSubmit)="onSubmit()">
+                           <div class="row mb-3">
+                              <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Article :</label>
+                              <div class="col-md-8 col-lg-9"> 
+                                 <select [(ngModel)] = "taille.article" formControlName="article" [ngClass]="{'is-invalid':submitted && addForm.controls.article.errors}" class="form-select" aria-label="Default select example" (change)="selectChangeHandlerArticle($event)">
+                                    <option value="{{article.id}}" *ngFor="let article of articles">
+                                       {{article.libelle}}
+                                    </option>
+                                 </select>
+                                 <div *ngIf="submitted && addForm.controls.article.errors" class="invalid-feedback">
+                                    <div *ngIf="submitted && addForm.controls.article.errors.required">
+                                       Ce champs est obligatoire!
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row mb-3">
+                              <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Désignation :</label>
+                              <div class="col-md-8 col-lg-9"> 
+                                 <input [(ngModel)] = "taille.designation" type="text" class="form-control" id="theme" id="theme" formControlName="desg" [ngClass]="{'is-invalid':submitted && addForm.controls.desg.errors}">
+                                 
+                                 <div *ngIf="submitted && addForm.controls.desg.errors" class="invalid-feedback">
+                                    <div *ngIf="submitted && addForm.controls.desg.errors.required">
+                                       Ce champs est obligatoire!
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           
+                           
+                           
+                           
+                           <div class="text-center">
+                              <button type="submit"  class="btn btn-primary">Enregistrer</button> 
+                              <button type="reset" class="btn btn-secondary">Annuler</button>
+                           </div>
+                           
+                        </form>
+                     </div>
+                     
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>
